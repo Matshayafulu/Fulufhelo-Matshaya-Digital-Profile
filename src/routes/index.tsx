@@ -25,6 +25,7 @@ import {
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import profileAsset from "@/assets/fulufhelo-matshaya-profile.png.asset.json";
+import cvAsset from "@/assets/cv-fulufhelo.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,7 +65,7 @@ const skillGroups = [
 
 const certifications = [
   { title: "Google AI Essentials", issuer: "Google", items: ["Introduction to AI", "Maximize Productivity With AI Tools", "Discover the Art of Prompting", "Use AI Responsibly", "Stay Ahead of the AI Curve"] },
-  { title: "Google Project Management Certificate", issuer: "Coursera", items: [] },
+  { title: "Google Project Management Certificate", issuer: "Coursera", items: ["Beginning the Planning Phase", "Building a Project Plan", "Managing Budgeting and Procurement", "Managing Risks Effectively", "Organising Communication and Documentation"] },
 ];
 
 const journey = ["2016 — Matric, Thengwe High School", "University of Venda — Urban & Regional Planning", "2019–2021 — Speaker of the Parliament, University of Venda", "Customer Service Experience", "Self-taught Software Development", "Full-stack Development", "AI & Technology Learning", "Automation Testing / Selenium", "Future — Cybersecurity + Automation + AI"];
