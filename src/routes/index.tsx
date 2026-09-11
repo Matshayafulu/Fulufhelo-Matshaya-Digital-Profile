@@ -106,6 +106,12 @@ const foundation = [
     copy: "Self-directed software development turned into working projects, built with C#, SQL, React, .NET and REST APIs.",
     points: ["Full-stack admin system with authentication, CRUD and SQL Server data", "C# applications covering OOP, transaction logic and system design", "React interfaces connected to REST APIs with JWT-secured requests", "Ongoing learning in AI, automation testing with Selenium and cybersecurity"],
   },
+  {
+    icon: BrainCircuit,
+    title: "AI Learning — CAPACITI | 2026",
+    copy: "Completed a five-day AI programme through CAPACITI, developing practical AI knowledge, AI-tool usage, prompting, productivity and responsible AI skills.",
+    points: ["Practical AI fundamentals and real-world AI-tool application", "Prompting techniques to improve productivity and output quality", "Responsible AI awareness, including ethics, bias and safe usage", "Productivity-focused workflows using AI-powered tools"],
+  },
 ];
 
 const journey = ["2016 — Matric, Thengwe High School", "University of Venda — Urban & Regional Planning", "2019–2021 — Speaker of the Parliament, University of Venda", "Customer Service Experience", "Self-taught Software Development", "Full-stack Development", "AI & Technology Learning", "Automation Testing / Selenium", "Future — Cybersecurity + Automation + AI"];
