@@ -24,8 +24,13 @@ import {
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import profileAsset from "@/assets/fulufhelo-matshaya-profile.png.asset.json";
 import cvAsset from "@/assets/cv-fulufhelo.pdf.asset.json";
+import certPmImage from "@/assets/cert-pm.jpg.asset.json";
+import certAiImage from "@/assets/cert-ai.jpg.asset.json";
+import certPmPdf from "@/assets/cert-pm.pdf.asset.json";
+import certAiPdf from "@/assets/cert-ai.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,8 +69,43 @@ const skillGroups = [
 ];
 
 const certifications = [
-  { title: "Google AI Essentials", issuer: "Google", items: ["Introduction to AI", "Maximize Productivity With AI Tools", "Discover the Art of Prompting", "Use AI Responsibly", "Stay Ahead of the AI Curve"] },
-  { title: "Google Project Management Certificate", issuer: "Coursera", items: ["Beginning the Planning Phase", "Building a Project Plan", "Managing Budgeting and Procurement", "Managing Risks Effectively", "Organising Communication and Documentation"] },
+  {
+    title: "Google AI Essentials",
+    issuer: "Coursera · Specialization · Sep 7, 2026",
+    items: ["Introduction to AI", "Maximize Productivity With AI Tools", "Discover the Art of Prompting", "Use AI Responsibly", "Stay Ahead of the AI Curve"],
+    image: certAiImage.url,
+    file: certAiPdf.url,
+    verify: "https://coursera.org/verify/specialization/1AVXJ3DH7DIU",
+  },
+  {
+    title: "Google Project Management",
+    issuer: "Coursera · Professional Certificate · 30-Sep-2022",
+    items: ["Foundations of Project Management", "Project Initiation: Starting a Successful Project", "Project Planning: Putting It All Together", "Project Execution: Running the Project", "Agile Project Management", "Capstone: Applying Project Management in the Real World"],
+    image: certPmImage.url,
+    file: certPmPdf.url,
+    verify: "https://coursera.org/verify/professional-cert/MFSL6PC8TBJT",
+  },
+];
+
+const foundation = [
+  {
+    icon: Map,
+    title: "Urban & Regional Planning",
+    copy: "Qualified Urban & Regional Planner from the University of Venda, with academic work in spatial and data analysis, GIS, AutoCAD, SketchUp and IBM Statistics.",
+    points: ["Environmental Resource Management, Environmental Law, Transport Planning and Energy Planning coursework", "Spatial, GIS and statistical data analysis applied to planning problems", "Speaker of the Parliament, University of Venda (2019–2021) — chairing proceedings and stakeholder engagement"],
+  },
+  {
+    icon: Users,
+    title: "Customer Service",
+    copy: "Real customer-facing work where clear communication, patience and following process mattered every single day.",
+    points: ["Listening to customers and explaining solutions in plain language", "Resolving complaints and queries through practical problem solving", "Following company processes and standards accurately", "Staying calm, organised and reliable under pressure and in busy periods"],
+  },
+  {
+    icon: Code2,
+    title: "Technology",
+    copy: "Self-directed software development turned into working projects, built with C#, SQL, React, .NET and REST APIs.",
+    points: ["Full-stack admin system with authentication, CRUD and SQL Server data", "C# applications covering OOP, transaction logic and system design", "React interfaces connected to REST APIs with JWT-secured requests", "Ongoing learning in AI, automation testing with Selenium and cybersecurity"],
+  },
 ];
 
 const journey = ["2016 — Matric, Thengwe High School", "University of Venda — Urban & Regional Planning", "2019–2021 — Speaker of the Parliament, University of Venda", "Customer Service Experience", "Self-taught Software Development", "Full-stack Development", "AI & Technology Learning", "Automation Testing / Selenium", "Future — Cybersecurity + Automation + AI"];
@@ -73,6 +113,7 @@ const journey = ["2016 — Matric, Thengwe High School", "University of Venda �
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeCert, setActiveCert] = useState<(typeof certifications)[number] | null>(null);
 
   const submitContact = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -139,7 +180,7 @@ function Index() {
         <section className="py-24">
           <div className="mx-auto max-w-6xl px-5 lg:px-8"><p className="font-mono text-sm font-bold text-primary">02 / PROFESSIONAL EXPERIENCE</p><h2 className="mt-3 text-4xl font-extrabold">A multidisciplinary foundation</h2>
             <div className="mt-10 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
-              {[[Map, "Urban & Regional Planning", "Analytical, planning, research, systems and data-oriented foundation."], [Users, "Customer Service", "Clear communication, problem solving, process adherence and calm under pressure."], [Code2, "Technology", "Self-directed software development, practical applications and continued technical learning."]].map(([Icon, title, copy]) => { const ItemIcon = Icon as typeof Map; return <article key={String(title)} className="bg-background p-7"><ItemIcon className="h-7 w-7 text-primary" /><h3 className="mt-5 text-xl font-bold">{String(title)}</h3><p className="mt-3 leading-7 text-muted-foreground">{String(copy)}</p></article>; })}
+              {foundation.map(({ icon: ItemIcon, title, copy, points }) => <article key={title} className="bg-background p-7"><ItemIcon className="h-7 w-7 text-primary" /><h3 className="mt-5 text-xl font-bold">{title}</h3><p className="mt-3 leading-7 text-muted-foreground">{copy}</p><ul className="mt-5 space-y-2">{points.map((point) => <li key={point} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{point}</li>)}</ul></article>)}
             </div>
           </div>
         </section>
@@ -157,7 +198,7 @@ function Index() {
 
         <section id="education" className="py-24"><div className="mx-auto max-w-6xl px-5 lg:px-8"><div className="grid gap-12 lg:grid-cols-2"><div><p className="font-mono text-sm font-bold text-primary">06 / EDUCATION</p><h2 className="mt-3 text-4xl font-extrabold">Learning foundations</h2></div><div className="space-y-8"><article className="border-l-4 border-primary pl-6"><GraduationCap className="text-primary" /><h3 className="mt-4 text-xl font-bold">University of Venda</h3><p className="mt-1 font-semibold">Urban & Regional Planning</p><p className="mt-3 text-sm leading-6 text-muted-foreground">Environmental Resource Management · Environmental Law · Transport Planning · Energy Planning</p></article><article className="border-l-4 border-secondary pl-6"><GraduationCap className="text-secondary-foreground" /><h3 className="mt-4 text-xl font-bold">Thengwe High School</h3><p className="mt-1 text-muted-foreground">Matric — 2016</p></article></div></div></div></section>
 
-        <section id="certifications" className="border-y border-border bg-card py-24"><div className="mx-auto max-w-6xl px-5 lg:px-8"><p className="font-mono text-sm font-bold text-primary">07 / CERTIFICATIONS &amp; DEVELOPMENT</p><h2 className="mt-3 text-4xl font-extrabold">Certified, curious, always growing</h2><div className="mt-10 grid gap-5 md:grid-cols-2">{certifications.map(({ title, issuer, items }) => <article key={title} className="border border-border bg-background p-7 transition-shadow hover:shadow-[0_0_0_1px_var(--color-primary)]"><span className="text-xs font-bold uppercase text-muted-foreground">{issuer}</span><h3 className="mt-1 text-xl font-bold">{title}</h3>{items.length > 0 && <ul className="mt-5 space-y-2">{items.map((item) => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{item}</li>)}</ul>}</article>)}
+        <section id="certifications" className="border-y border-border bg-card py-24"><div className="mx-auto max-w-6xl px-5 lg:px-8"><p className="font-mono text-sm font-bold text-primary">07 / CERTIFICATIONS &amp; DEVELOPMENT</p><h2 className="mt-3 text-4xl font-extrabold">Certified, curious, always growing</h2><div className="mt-10 grid gap-5 md:grid-cols-2">{certifications.map((cert) => { const { title, issuer, items, image } = cert; return <article key={title} onClick={() => setActiveCert(cert)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveCert(cert); } }} className="cursor-pointer border border-border bg-background p-7 transition-shadow hover:shadow-[0_0_0_1px_var(--color-primary)] focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--color-primary)]"><span className="text-xs font-bold uppercase text-muted-foreground">{issuer}</span><h3 className="mt-1 text-xl font-bold">{title}</h3><div className="mt-5 overflow-hidden border border-border bg-muted"><img src={image} alt={`${title} certificate`} loading="lazy" className="h-44 w-full object-cover object-top" /></div><p className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">View certificate <ArrowRight className="h-4 w-4" /></p>{items.length > 0 && <ul className="mt-5 space-y-2">{items.map((item) => <li key={item} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{item}</li>)}</ul>}</article>; })}
             <article className="border border-border bg-background p-7 md:col-span-2"><span className="text-xs font-bold uppercase text-muted-foreground">Leadership · University of Venda</span><h3 className="mt-1 text-xl font-bold">Speaker of the Parliament — 2019–2021</h3><p className="mt-3 leading-7 text-muted-foreground">Leadership, communication, public speaking and stakeholder-engagement experience gained by chairing student parliament proceedings.</p></article></div></div></section>
 
         <section className="bg-secondary/40 py-24"><div className="mx-auto max-w-6xl px-5 lg:px-8"><p className="font-mono text-sm font-bold text-primary">08 / CURRENTLY LEARNING</p><h2 className="mt-3 text-4xl font-extrabold">Always in beta</h2><p className="mt-4 max-w-xl text-muted-foreground">These are active learning areas — explored with curiosity, consistency and practical experimentation.</p><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{[[BrainCircuit, "AI"], [TestTube2, "Automation Testing", "Selenium"], [LockKeyhole, "Cybersecurity"], [Cloud, "Cloud Technology"]].map(([Icon, title, note]) => { const ItemIcon = Icon as typeof BrainCircuit; return <article key={String(title)} className="border border-border bg-background p-6"><ItemIcon className="h-7 w-7 text-primary" /><span className="mt-8 block text-xs font-bold uppercase text-muted-foreground">Learning area</span><h3 className="mt-1 text-lg font-bold">{String(title)}</h3>{note && <p className="mt-1 text-sm text-muted-foreground">{String(note)}</p>}</article>; })}</div></div></section>
@@ -167,6 +208,21 @@ function Index() {
             <form onSubmit={submitContact} className="grid gap-5" aria-label="Contact form"><div className="grid gap-5 sm:grid-cols-2"><label className="text-sm font-semibold">Name<input name="name" required className="mt-2 h-11 w-full border border-input bg-background px-3 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" /></label><label className="text-sm font-semibold">Email<input name="email" type="email" required className="mt-2 h-11 w-full border border-input bg-background px-3 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" /></label></div><label className="text-sm font-semibold">Subject<input name="subject" required className="mt-2 h-11 w-full border border-input bg-background px-3 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" /></label><label className="text-sm font-semibold">Message<textarea name="message" rows={5} required className="mt-2 w-full resize-none border border-input bg-background p-3 font-normal outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" /></label><Button type="submit" size="lg" className="w-fit">Send Message <Send /></Button></form>
           </div></section>
       </main>
+
+      <Dialog open={activeCert !== null} onOpenChange={(open) => !open && setActiveCert(null)}>
+        <DialogContent className="max-h-[92vh] max-w-3xl overflow-y-auto">
+          <DialogHeader><DialogTitle>{activeCert?.title}</DialogTitle></DialogHeader>
+          {activeCert && <>
+            <p className="text-sm text-muted-foreground">{activeCert.issuer}</p>
+            <img src={activeCert.image} alt={`${activeCert.title} certificate`} className="w-full border border-border" />
+            <div className="flex flex-wrap gap-3">
+              <Button asChild variant="outline"><a href={activeCert.file} target="_blank" rel="noreferrer">Open PDF</a></Button>
+              <Button asChild variant="ghost"><a href={activeCert.verify} target="_blank" rel="noreferrer">Verify certificate</a></Button>
+            </div>
+          </>}
+        </DialogContent>
+      </Dialog>
+
 
       <footer className="border-t border-border bg-foreground py-10 text-background"><div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 sm:flex-row sm:items-center sm:justify-between lg:px-8"><div><p className="font-display font-bold">Fulufhelo Matshaya<span className="text-accent">.</span></p><p className="mt-1 text-xs text-background/60">© 2026 Fulufhelo Matshaya. All rights reserved.</p></div><p className="text-sm text-background/60">Built with curiosity, code and continuous learning.</p><div className="flex gap-3"><a href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Github className="h-5 w-5" /></a><a href={links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin className="h-5 w-5" /></a><a href={links.email} aria-label="Email"><Mail className="h-5 w-5" /></a></div></div></footer>
     </div>
