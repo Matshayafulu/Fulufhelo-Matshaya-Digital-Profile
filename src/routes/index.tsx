@@ -43,7 +43,7 @@ export const Route = createFileRoute("/")({
 const links = {
   github: "https://github.com/Matshayafulu",
   linkedin: "https://www.linkedin.com/in/fulufhelo-matshaya-232b14214",
-  email: "mailto:matshayafulhelo@gmail.com",
+  email: "mailto:Matshayafulufhelo@gmail.com",
 };
 
 const projects = [
@@ -57,11 +57,18 @@ const skillGroups = [
   ["Programming", "C# · JavaScript · SQL · HTML · CSS"],
   ["Development", "React · Vite · .NET · Entity Framework Core"],
   ["Data & APIs", "SQL Server · REST APIs · Fetch API · JWT · CRUD"],
+  ["Planning, GIS & Data", "GIS · AutoCAD · SketchUp · IBM Statistics & Data Analysis · Urban & Regional Planning · Data Analysis · Spatial Analysis"],
   ["Tools", "Git · GitHub · Visual Studio · VS Code"],
-  ["Professional", "Communication · Customer service · Problem solving · Analytical thinking · Teamwork"],
+  ["Professional", "Customer service · Communication · Problem solving · Analytical thinking · Leadership · Teamwork · Project management"],
 ];
 
-const journey = ["2016 — Matric, Thengwe High School", "University of Venda — Urban & Regional Planning", "Customer Service Experience", "Self-taught Software Development", "Full-stack Development", "AI & Technology Learning", "Automation Testing / Selenium", "Future — Cybersecurity + Automation + AI"];
+const certifications = [
+  { title: "Google AI Essentials", issuer: "Google", items: ["Introduction to AI", "Maximize Productivity With AI Tools", "Discover the Art of Prompting", "Use AI Responsibly", "Stay Ahead of the AI Curve"] },
+  { title: "Google Project Management Certificate", issuer: "Coursera", items: [] },
+];
+
+const journey = ["2016 — Matric, Thengwe High School", "University of Venda — Urban & Regional Planning", "2019–2021 — Speaker of the Parliament, University of Venda", "Customer Service Experience", "Self-taught Software Development", "Full-stack Development", "AI & Technology Learning", "Automation Testing / Selenium", "Future — Cybersecurity + Automation + AI"];
+
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
