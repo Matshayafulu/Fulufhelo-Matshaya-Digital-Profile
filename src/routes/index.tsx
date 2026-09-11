@@ -96,9 +96,9 @@ const foundation = [
   },
   {
     icon: Users,
-    title: "Customer Service",
-    copy: "Real customer-facing work where clear communication, patience and following process mattered every single day.",
-    points: ["Listening to customers and explaining solutions in plain language", "Resolving complaints and queries through practical problem solving", "Following company processes and standards accurately", "Staying calm, organised and reliable under pressure and in busy periods"],
+    title: "Customer Service — Lewis Group | September 2025 – May 2026",
+    copy: "Professional customer support at Lewis Group, where customer communication, query resolution and problem-solving were central to every interaction.",
+    points: ["Communicated clearly with customers to understand needs and explain solutions", "Resolved queries and complaints through patient, practical problem-solving", "Followed company processes and standards accurately on every case", "Delivered reliable, calm support under pressure and in busy periods"],
   },
   {
     icon: Code2,
