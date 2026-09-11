@@ -179,7 +179,7 @@ function Index() {
         <section className="py-24">
           <div className="mx-auto max-w-6xl px-5 lg:px-8"><p className="font-mono text-sm font-bold text-primary">02 / PROFESSIONAL EXPERIENCE</p><h2 className="mt-3 text-4xl font-extrabold">A multidisciplinary foundation</h2>
             <div className="mt-10 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
-              {[[Map, "Urban & Regional Planning", "Analytical, planning, research, systems and data-oriented foundation."], [Users, "Customer Service", "Clear communication, problem solving, process adherence and calm under pressure."], [Code2, "Technology", "Self-directed software development, practical applications and continued technical learning."]].map(([Icon, title, copy]) => { const ItemIcon = Icon as typeof Map; return <article key={String(title)} className="bg-background p-7"><ItemIcon className="h-7 w-7 text-primary" /><h3 className="mt-5 text-xl font-bold">{String(title)}</h3><p className="mt-3 leading-7 text-muted-foreground">{String(copy)}</p></article>; })}
+              {foundation.map(({ icon: ItemIcon, title, copy, points }) => <article key={title} className="bg-background p-7"><ItemIcon className="h-7 w-7 text-primary" /><h3 className="mt-5 text-xl font-bold">{title}</h3><p className="mt-3 leading-7 text-muted-foreground">{copy}</p><ul className="mt-5 space-y-2">{points.map((point) => <li key={point} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{point}</li>)}</ul></article>)}
             </div>
           </div>
         </section>
