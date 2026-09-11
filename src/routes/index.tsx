@@ -209,6 +209,21 @@ function Index() {
           </div></section>
       </main>
 
+      <Dialog open={activeCert !== null} onOpenChange={(open) => !open && setActiveCert(null)}>
+        <DialogContent className="max-h-[92vh] max-w-3xl overflow-y-auto">
+          <DialogHeader><DialogTitle>{activeCert?.title}</DialogTitle></DialogHeader>
+          {activeCert && <>
+            <p className="text-sm text-muted-foreground">{activeCert.issuer}</p>
+            <img src={activeCert.image} alt={`${activeCert.title} certificate`} className="w-full border border-border" />
+            <div className="flex flex-wrap gap-3">
+              <Button asChild variant="outline"><a href={activeCert.file} target="_blank" rel="noreferrer">Open PDF</a></Button>
+              <Button asChild variant="ghost"><a href={activeCert.verify} target="_blank" rel="noreferrer">Verify certificate</a></Button>
+            </div>
+          </>}
+        </DialogContent>
+      </Dialog>
+
+
       <footer className="border-t border-border bg-foreground py-10 text-background"><div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 sm:flex-row sm:items-center sm:justify-between lg:px-8"><div><p className="font-display font-bold">Fulufhelo Matshaya<span className="text-accent">.</span></p><p className="mt-1 text-xs text-background/60">© 2026 Fulufhelo Matshaya. All rights reserved.</p></div><p className="text-sm text-background/60">Built with curiosity, code and continuous learning.</p><div className="flex gap-3"><a href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Github className="h-5 w-5" /></a><a href={links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin className="h-5 w-5" /></a><a href={links.email} aria-label="Email"><Mail className="h-5 w-5" /></a></div></div></footer>
     </div>
   );
