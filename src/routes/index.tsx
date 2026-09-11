@@ -108,7 +108,7 @@ function Index() {
               <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground">Building practical technology solutions while combining analytical thinking, customer experience and continuous technical learning.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg"><a href="#projects">View Projects <ArrowRight /></a></Button>
-                <Button asChild size="lg" variant="outline"><a href={links.email} title="Request Fulufhelo’s CV by email"><ArrowDownToLine /> Download CV</a></Button>
+                <Button asChild size="lg" variant="outline"><a href={cvAsset.url} download="CV-Fulufhelo.pdf" target="_blank" rel="noreferrer" title="Download Fulufhelo’s CV"><ArrowDownToLine /> Download CV</a></Button>
               </div>
               <div className="mt-8 flex gap-3">
                 <Button asChild variant="ghost" size="icon"><a href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Github /></a></Button>
