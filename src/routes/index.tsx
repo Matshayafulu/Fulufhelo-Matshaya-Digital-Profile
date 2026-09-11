@@ -113,6 +113,7 @@ const journey = ["2016 â€” Matric, Thengwe High School", "University of Venda â€
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeCert, setActiveCert] = useState<(typeof certifications)[number] | null>(null);
 
   const submitContact = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
