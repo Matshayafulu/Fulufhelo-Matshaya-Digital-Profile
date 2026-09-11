@@ -24,8 +24,13 @@ import {
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import profileAsset from "@/assets/fulufhelo-matshaya-profile.png.asset.json";
 import cvAsset from "@/assets/cv-fulufhelo.pdf.asset.json";
+import certPmImage from "@/assets/cert-pm.jpg.asset.json";
+import certAiImage from "@/assets/cert-ai.jpg.asset.json";
+import certPmPdf from "@/assets/cert-pm.pdf.asset.json";
+import certAiPdf from "@/assets/cert-ai.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
