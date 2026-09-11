@@ -64,8 +64,43 @@ const skillGroups = [
 ];
 
 const certifications = [
-  { title: "Google AI Essentials", issuer: "Google", items: ["Introduction to AI", "Maximize Productivity With AI Tools", "Discover the Art of Prompting", "Use AI Responsibly", "Stay Ahead of the AI Curve"] },
-  { title: "Google Project Management Certificate", issuer: "Coursera", items: ["Beginning the Planning Phase", "Building a Project Plan", "Managing Budgeting and Procurement", "Managing Risks Effectively", "Organising Communication and Documentation"] },
+  {
+    title: "Google AI Essentials",
+    issuer: "Coursera · Specialization · Sep 7, 2026",
+    items: ["Introduction to AI", "Maximize Productivity With AI Tools", "Discover the Art of Prompting", "Use AI Responsibly", "Stay Ahead of the AI Curve"],
+    image: certAiImage.url,
+    file: certAiPdf.url,
+    verify: "https://coursera.org/verify/specialization/1AVXJ3DH7DIU",
+  },
+  {
+    title: "Google Project Management",
+    issuer: "Coursera · Professional Certificate · 30-Sep-2022",
+    items: ["Foundations of Project Management", "Project Initiation: Starting a Successful Project", "Project Planning: Putting It All Together", "Project Execution: Running the Project", "Agile Project Management", "Capstone: Applying Project Management in the Real World"],
+    image: certPmImage.url,
+    file: certPmPdf.url,
+    verify: "https://coursera.org/verify/professional-cert/MFSL6PC8TBJT",
+  },
+];
+
+const foundation = [
+  {
+    icon: Map,
+    title: "Urban & Regional Planning",
+    copy: "Qualified Urban & Regional Planner from the University of Venda, with academic work in spatial and data analysis, GIS, AutoCAD, SketchUp and IBM Statistics.",
+    points: ["Environmental Resource Management, Environmental Law, Transport Planning and Energy Planning coursework", "Spatial, GIS and statistical data analysis applied to planning problems", "Speaker of the Parliament, University of Venda (2019–2021) — chairing proceedings and stakeholder engagement"],
+  },
+  {
+    icon: Users,
+    title: "Customer Service",
+    copy: "Real customer-facing work where clear communication, patience and following process mattered every single day.",
+    points: ["Listening to customers and explaining solutions in plain language", "Resolving complaints and queries through practical problem solving", "Following company processes and standards accurately", "Staying calm, organised and reliable under pressure and in busy periods"],
+  },
+  {
+    icon: Code2,
+    title: "Technology",
+    copy: "Self-directed software development turned into working projects, built with C#, SQL, React, .NET and REST APIs.",
+    points: ["Full-stack admin system with authentication, CRUD and SQL Server data", "C# applications covering OOP, transaction logic and system design", "React interfaces connected to REST APIs with JWT-secured requests", "Ongoing learning in AI, automation testing with Selenium and cybersecurity"],
+  },
 ];
 
 const journey = ["2016 — Matric, Thengwe High School", "University of Venda — Urban & Regional Planning", "2019–2021 — Speaker of the Parliament, University of Venda", "Customer Service Experience", "Self-taught Software Development", "Full-stack Development", "AI & Technology Learning", "Automation Testing / Selenium", "Future — Cybersecurity + Automation + AI"];
